@@ -24,3 +24,8 @@ data(df_pop_state)
 
 ?state_choropleth
 state_choropleth(df_pop_state)
+
+if(!require(data.table)) install.packages("data.table")
+library(data.table)
+
+?fread
