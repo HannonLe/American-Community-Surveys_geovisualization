@@ -1,3 +1,9 @@
+## manually ignore
+/data/*.csv
+/data/*.Rdata
+
+## below are the default ignores for R
+
 # History files
 .Rhistory
 .Rapp.history
