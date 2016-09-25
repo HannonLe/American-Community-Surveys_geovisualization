@@ -1,0 +1,132 @@
+---
+title: "tutorial stuff"
+output:
+  html_document: default
+  html_notebook: default
+---
+
+# 1 DT
+
+An interactive data chart.
+
+```{r}
+if(!require(DT)) install.packages("DT")
+library(DT)
+datatable(iris) # interactive data chart
+```
+
+# 2 data.table::fread
+
+Fast reading.
+
+```{r}
+if(!require(data.table)) install.packages("data.table")
+library(data.table)
+
+?fread # omg fread is so freaking fast
+```
+
+# 3 Mutilple ways to present data on a US map
+
+## 3.1 chorolepth
+
+* pros:
+    1. uses straightfoward index (lower case state name and 
+    2. with legend5 digit fips code)
+    3. possible zooming into specific part of map
+* cons:
+    1. static
+    2. only US state map and US county map
+
+
+```{r}
+
+library(choroplethr)
+library(choroplethrMaps)
+
+?df_pop_state
+data(df_pop_state)
+
+?state_choropleth # static maps
+state_choropleth(df_pop_state) # uses lower case state name as index
+
+data(df_pop_county)
+county_choropleth(df_pop_county,
+                  title       = "Population",
+                  legend      = "Population",
+                  num_colors  = 1,
+                  state_zoom  = "new york") # uses 5 digit fips code as index
+
+```
+
+
+## 3.2 plotly
+
+* pros
+    1. good looking
+    2. interactive with hovers, zoom in and out
+* cons:
+    1. no documentation, how to adjust parameters?
+
+```{r}
+if(!require(plotly)) install.packages("plotly")
+library(plotly)
+
+# plotly state maps https://plot.ly/r/choropleth-maps/ interactive maps
+
+df <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv")
+df$hover <- with(df, paste(state, '<br>', "Beef", beef, "Dairy", dairy, "<br>",
+                           "Fruits", total.fruits, "Veggies", total.veggies,
+                           "<br>", "Wheat", wheat, "Corn", corn))
+# give state boundaries a white border
+l <- list(color = toRGB("white"), width = 2)
+# specify some map projection/options
+g <- list(
+  scope = 'usa',
+  projection = list(type = 'albers usa'),
+  showlakes = TRUE,
+  lakecolor = toRGB('white')
+)
+
+plot_ly(df, z = total.exports, text = hover, locations = code, type = 'choropleth',
+        locationmode = 'USA-states', color = total.exports, colors = 'Purples',
+        marker = list(line = l), colorbar = list(title = "Millions USD")) %>%
+  layout(title = '2011 US Agriculture Exports by State<br>(Hover for breakdown)', geo = g)
+
+```
+
+## 3.3 leaflet + maps
+
+See http://rstudio.github.io/leaflet/
+
+* pros
+    1. can apply to anywhere in the world
+    2. interactive with detailed map, zoom in and out
+* cons:
+    1. rely on predefined state or county maps in "maps" package
+    2. there are other ways to add state/county polygons but not straight forward
+
+
+```{r}
+if(!require(maps)) install.packages("maps")
+if(!require(leaflet)) install.packages("leaflet")
+
+library(maps)
+library(leaflet)
+
+mapStates <- map(database = "state", fill = TRUE, plot = FALSE)
+pal <- colorNumeric(palette = "OrRd", domain = 1)
+leaflet(data = mapStates) %>% addTiles() %>%
+  addPolygons(fillColor = pal(1), fillOpacity=0.5,stroke = F)
+
+```
+
+```{r}
+library(leaflet)
+m = leaflet() %>% addTiles()  # a map with the default OSM tile layer
+m
+m %>% fitBounds(0, 40, 10, 60) # set bounds Europe map
+m %>% setView(-73.9619572,40.8078214, zoom = 17) # move the center to Columbia university
+
+```
+

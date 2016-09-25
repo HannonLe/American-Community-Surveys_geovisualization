@@ -33,3 +33,9 @@ Computer editing of census data falls into three basic categories:
 ## 2 Data source
 
 http://www.census.gov/programs-surveys/acs/data/pums.html
+
+## 3 PUMA code to county
+
+See http://mcdc.missouri.edu/allabout/zipcodes_2010supplement.shtml
+
+Actual conversion list can be downloaded via http://mcdc2.missouri.edu/cgi-bin/broker?_PROGRAM=websas.uex2dex.sas&_SERVICE=appdev9&path=/pub/data/georef&dset=zcta_master&view=0

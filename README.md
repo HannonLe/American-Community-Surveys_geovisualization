@@ -4,11 +4,16 @@
 Term: Fall 2016
 
 + Team Unassigned
-+ Projec title:
++ Project title: Where are the houses of seasonal/recreational/occasional use?
 + Team members
 	+ Yinxiang Gao
 
-+ Project summary: 
++ Project summary: In this project, we focus on the seasonal/recreational/occasional use households, trying to discover the possible relationship between their geographical location and the location of famous sights (national parks and forests).
+
+![](./figs/VACS_state.png)
+![](./figs/VACS_county.png)
+![](./figs/colorado_contrast.png)
+
 
 **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement.
 
