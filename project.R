@@ -136,3 +136,4 @@ county_choropleth(Vacancy_county,
                   legend="Percentage",
                   num_colors  = 1,
                   state_zoom = "missouri")
+
