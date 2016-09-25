@@ -1,6 +1,12 @@
 ## manually ignore
-/data/*.csv
+/data/ss13husa.csv
+/data/ss14husa.csv
+/data/ss14husb.csv
+/data/ss14pusa.csv
+/data/ss14pusb.csv
 /data/*.Rdata
+/data/*.zip
+*.DS_Store
 
 ## below are the default ignores for R
 
