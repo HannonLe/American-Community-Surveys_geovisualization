@@ -3,9 +3,8 @@
 #
 Term: Fall 2016
 
-+ Team Unassigned
 + Project title: Where are the houses of seasonal/recreational/occasional use?
-+ Team members
++ Members
 	+ Yinxiang Gao
 
 + Project summary: In this project, we focus on the seasonal/recreational/occasional use households, trying to discover the possible relationship between their geographical location and the location of famous sights (national parks and forests).
